@@ -12,7 +12,8 @@ RUN cd /root &&\
 #ADD start.sh /root/start.sh
 #ADD app.json /root/eth-net-intelligence-api/app.json
 #RUN chmod +x /root/start.sh
-
+EXPOSE 3000
 #ENTRYPOINT /root/start.sh
 #ENTRYPOINT WS_SECRET="asdf" npm start
-ENTRYPOINT npm start
+#ENTRYPOINT npm start
+CMD ["npm", "start"]
