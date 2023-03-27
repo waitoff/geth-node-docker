@@ -20,7 +20,7 @@ Deploying a node
 --------------------
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-git clone https://github.com/Joys-digital/goquorum-node-docker
+git clone https://github.com/waitoff/geth-node-docker
 cd goQuorum-node-docker
 sudo docker-compose -f docker-compose.yml up --build -d
 sudo docker-compose --scale node=6
