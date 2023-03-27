@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:latest-alpine
 #FROM ubuntu:22.04
 #FROM alpine
 
