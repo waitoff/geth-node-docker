@@ -1,7 +1,7 @@
-Joys-node-docker v.3.0 (08/07/2021)
+goQuorum-node-docker v.4.0 (27/03/2023)
 ================
 
-JOYS node Docker Compose
+node Docker Compose
 
 History
 --------------------
@@ -14,20 +14,14 @@ History
   - Transferred wallet balances
   - Ports changed from 30303 to 31323
   - Removed http permissions: admin,db,personal,shh 
-  
-Deploying a JOYS node
+- v4.0 Ethereum geth replaced with goQuorum Clique 
+
+Deploying a node
 --------------------
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-git clone https://github.com/Joys-digital/joys-node-docker
-cd joys-node-docker
-sudo docker-compose -f docker-compose.yml up --build
+git clone https://github.com/Joys-digital/goquorum-node-docker
+cd goQuorum-node-docker
+sudo docker-compose -f docker-compose.yml up --build -d
+sudo docker-compose --scale node=6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**The block speed in PoAS is 1 block per second, so we recommend using an SSD.**
-
-
-How to staking JOYS: 
---------------------
-
-https://staking.joys.digital/
