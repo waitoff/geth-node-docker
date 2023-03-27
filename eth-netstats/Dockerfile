@@ -23,7 +23,7 @@ RUN npm install
 #RUN npm install grunt-cli
 RUN npm install -g grunt-cli bower
 RUN npm install grunt-cli
-RUN grunt poa
+RUN grunt
 
 #ADD start.sh /root/start.sh
 #ADD app.json /root/eth-net-intelligence-api/app.json
