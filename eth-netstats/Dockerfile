@@ -2,8 +2,8 @@ FROM ubuntu:22.04
 #FROM alpine
 
 #RUN apk add --update git bash nodejs npm
-RUN apt update && apt upgrade -y
-RUN apt install git nodejs npm
+RUN apt-get update
+RUN apt-get install git nodejs npm
 
 
 #RUN cd /root &&\
