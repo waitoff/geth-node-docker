@@ -1,6 +1,10 @@
-FROM alpine
+FROM ubuntu:22.04
+#FROM alpine
 
-RUN apk add --update git bash nodejs npm
+#RUN apk add --update git bash nodejs npm
+RUN apt update && apt upgarde -y
+RUN apt install git nodejs npm
+
 
 #RUN cd /root &&\
 #    git clone https://github.com/goerli/ethstats-server &&\
