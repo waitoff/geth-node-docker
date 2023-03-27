@@ -14,17 +14,15 @@ WORKDIR /root
 
 RUN wget https://artifacts.consensys.net/public/go-quorum/raw/versions/v22.7.3/geth_v22.7.3_linux_amd64.tar.gz -O geth.tar.gz  \
     && tar -xf geth.tar.gz
-RUN ls /
-#ADD geth /root/
+
 RUN chmod +x /root/geth
 
 #ADD ../files/genesis.json /root/
 #ADD http://boot.joys.digital/posa/static-nodes.json /root/
-RUN ls /root/
-
 ADD boot.sh /root/boot.sh
 RUN chmod +x /root/boot.sh
 
+RUN ls /root/
 EXPOSE 31323
 EXPOSE 31323/udp
 EXPOSE 8545
