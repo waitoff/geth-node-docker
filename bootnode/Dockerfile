@@ -12,7 +12,7 @@ tar -xf geth_v22.7.2_linux_amd64.tar.gz
 ADD geth /root/
 RUN chmod +x /root/geth
 
-ADD ../files/genesis.json /root/
+#ADD ../files/genesis.json /root/
 #ADD http://boot.joys.digital/posa/static-nodes.json /root/
 RUN ls /root/
 
