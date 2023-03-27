@@ -13,7 +13,7 @@ RUN apk update && apk add wget
 
 RUN wget https://artifacts.consensys.net/public/go-quorum/raw/versions/v22.7.3/geth_v22.7.3_linux_amd64.tar.gz -O geth.tar.gz  \
     && tar -xf geth.tar.gz
-
+RUN ls /
 ADD geth /root/
 RUN chmod +x /root/geth
 
