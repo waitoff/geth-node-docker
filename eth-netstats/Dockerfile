@@ -2,12 +2,18 @@ FROM alpine
 
 RUN apk add --update git bash nodejs npm
 
-RUN cd /root &&\
-    git clone https://github.com/goerli/ethstats-server &&\
-    cd ethstats-server &&\
-    npm install &&\
-    npm install -g grunt-cli &&\
-    grunt poa
+#RUN cd /root &&\
+#    git clone https://github.com/goerli/ethstats-server &&\
+#    cd ethstats-server &&\
+#    npm install &&\
+#    npm install -g grunt-cli &&\
+#    grunt poa
+
+RUN git clone https://github.com/goerli/ethstats-server
+WORKDIR /eth-netstats
+RUN npm install
+RUN npm install -g grunt-cli
+RUN grunt poa
 
 #ADD start.sh /root/start.sh
 #ADD app.json /root/eth-net-intelligence-api/app.json
