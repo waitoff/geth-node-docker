@@ -10,11 +10,12 @@ RUN apk update && apk add wget
 
 #RUN wget https://artifacts.consensys.net/public/go-quorum/raw/versions/v22.7.2/geth_v22.7.2_linux_amd64.tar.gz
 #RUN tar -xf geth_v22.7.2_linux_amd64.tar.gz
+WORKDIR /root
 
 RUN wget https://artifacts.consensys.net/public/go-quorum/raw/versions/v22.7.3/geth_v22.7.3_linux_amd64.tar.gz -O geth.tar.gz  \
     && tar -xf geth.tar.gz
 RUN ls /
-ADD geth /root/
+#ADD geth /root/
 RUN chmod +x /root/geth
 
 #ADD ../files/genesis.json /root/
