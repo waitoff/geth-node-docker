@@ -1,7 +1,9 @@
-FROM ubuntu:22.04
+FROM alpine
+#FROM ubuntu:22.04
 LABEL version="10.0"
 
-RUN apt-get update && apt-get install --yes software-properties-common apt-utils
+#RUN apt-get update && apt-get install --yes software-properties-common apt-utils
+RUN apk update && apk add wget
 
 #RUN add-apt-repository ppa:ethereum/ethereum
 #RUN apt-get update && apt-get install geth --yes
