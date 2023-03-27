@@ -1,8 +1,8 @@
-FROM node:latest-alpine
+FROM node:12
 #FROM ubuntu:22.04
 #FROM alpine
 
-RUN apk add --update git bash
+#RUN apk add --update git bash
 #RUN apk add --update git bash nodejs npm
 #RUN apt-get update
 #RUN apt-get install git nodejs npm
