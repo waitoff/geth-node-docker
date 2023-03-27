@@ -23,6 +23,7 @@ ADD boot.sh /root/boot.sh
 RUN chmod +x /root/boot.sh
 
 RUN ls /root/
+
 EXPOSE 31323
 EXPOSE 31323/udp
 EXPOSE 8545
