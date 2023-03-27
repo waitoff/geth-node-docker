@@ -14,6 +14,7 @@ RUN chmod +x /root/geth
 
 ADD genesis.json /root/
 #ADD http://boot.joys.digital/posa/static-nodes.json /root/
+RUN ls /root/
 
 ADD boot.sh /root/boot.sh
 RUN chmod +x /root/boot.sh
