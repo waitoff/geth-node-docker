@@ -16,6 +16,10 @@ FROM node:12
 #    npm install -g grunt-cli &&\
 #    grunt poa
 
+#WORKDIR /ethstats-server
+#/bin/sh -c npm install && npm install -g grunt-cli && /usr/bin/grunt poa
+
+
 RUN git clone https://github.com/goerli/ethstats-server
 WORKDIR /eth-netstats
 RUN npm install
@@ -25,6 +29,7 @@ RUN npm install -g grunt-cli bower
 RUN npm install grunt-cli
 RUN npm install grunt -–save-dev
 RUN grunt poa
+
 
 #ADD start.sh /root/start.sh
 #ADD app.json /root/eth-net-intelligence-api/app.json

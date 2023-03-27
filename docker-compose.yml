@@ -1,26 +1,26 @@
 version: '3'
 
 services:
-#  bootnode:
-#    container_name: bootnode
-#    build: node
-#    restart: on-failure
-##    restart: always
-#    hostname: bootnode
-#    links:
-#      - netstats
-#    entrypoint: /root/boot.sh
-#    command: '--datadir=~/.ethereum/devchain --nodekeyhex=091bd6067cb4612df85d9c1ff85cc47f259ced4d4cd99816b14f35650f59c322 --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --networkid=456719 --rpc --rpcaddr="0.0.0.0"'
-#    volumes:
-#      - ./files/password:/root/files/password:ro
-#      - ./files/genesis.json:/root/files/genesis.json:ro
-#      - ./files/keystore:/root/.ethereum/devchain/keystore:rw
+  bootnode:
+    container_name: bootnode
+    build: node
+    restart: on-failure
+#    restart: always
+    hostname: bootnode
+    links:
+      - netstats
+    entrypoint: /root/boot.sh
+    command: '--datadir=~/.ethereum/devchain --nodekeyhex=091bd6067cb4612df85d9c1ff85cc47f259ced4d4cd99816b14f35650f59c322 --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --networkid=456719 --rpc --rpcaddr="0.0.0.0"'
+    volumes:
+      - ./files/password:/root/files/password:ro
+      - ./files/genesis.json:/root/files/genesis.json:ro
+      - ./files/keystore:/root/.ethereum/devchain/keystore:rw
 #      - /etc/localtime:/etc/localtime:ro
-#      - geth_data:/root/node:rw
-#    ports:
-#      - "30303:30303"
-#      - "30303:30303/udp"
-#      - "8545:8545"
+      - geth_data:/root/node:rw
+    ports:
+      - "30303:30303"
+      - "30303:30303/udp"
+      - "8545:8545"
 
 #    stdin_open: true
 #    tty: true
