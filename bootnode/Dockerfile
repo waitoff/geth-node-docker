@@ -1,31 +1,20 @@
-FROM alpine
-#FROM ubuntu:22.04
-LABEL version="10.0"
+FROM quorumengineering/quorum:latest
 
-#RUN apt-get update && apt-get install --yes software-properties-common apt-utils
-RUN apk update && apk add wget
+RUN apk update && apk add bash
 
-#RUN add-apt-repository ppa:ethereum/ethereum
-#RUN apt-get update && apt-get install geth --yes
+#COPY genesis.json /root/genesis.json
 
-#RUN wget https://artifacts.consensys.net/public/go-quorum/raw/versions/v22.7.2/geth_v22.7.2_linux_amd64.tar.gz
-#RUN tar -xf geth_v22.7.2_linux_amd64.tar.gz
-WORKDIR /root
-
-RUN wget https://artifacts.consensys.net/public/go-quorum/raw/versions/v22.7.3/geth_v22.7.3_linux_amd64.tar.gz -O geth.tar.gz  \
-    && tar -xf geth.tar.gz
-
-RUN chmod +x /root/geth
-
-#ADD ../files/genesis.json /root/
-#ADD http://boot.joys.digital/posa/static-nodes.json /root/
 ADD boot.sh /root/boot.sh
 RUN chmod +x /root/boot.sh
 
-RUN ls /root/
+WORKDIR /root
+RUN ls /root
 
-EXPOSE 31323
-EXPOSE 31323/udp
+
+EXPOSE 31513
+EXPOSE 31513/udp
 EXPOSE 8545
 
+#ENTRYPOINT ["/bin/sh", "-c", "/root/boot.sh"]
 ENTRYPOINT /root/boot.sh
+#ENTRYPOINT - /bin/sh -c geth --datadir $${DDIR} init $${GENESIS_FILE}

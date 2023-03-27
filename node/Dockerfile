@@ -1,18 +1,13 @@
-FROM ubuntu:22.04
-LABEL version="10.0"
+FROM quorumengineering/quorum:latest
+RUN apk update && apk add bash
 
-RUN apt-get update && apt-get install --yes software-properties-common apt-utils
-#RUN add-apt-repository ppa:ethereum/ethereum
-#RUN apt-get update && apt-get install geth --yes
+ADD start.sh /root/start.sh
+RUN chmod +x /root/start.sh
 
-ADD genesis.json /root/
-#ADD http://boot.joys.digital/posa/static-nodes.json /root/
+WORKDIR /root
 
-ADD start.sh /root/boot.sh
-RUN chmod +x /root/boot.sh
-
-EXPOSE 31323
-EXPOSE 31323/udp
+EXPOSE 31513
+EXPOSE 31513/udp
 EXPOSE 8545
 
-ENTRYPOINT /root/boot.sh
+ENTRYPOINT /root/start.sh

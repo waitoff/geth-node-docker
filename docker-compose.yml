@@ -1,45 +1,51 @@
-version: '3'
+version: '3.9'
 
 services:
   bootnode:
     container_name: bootnode
     build: bootnode
-#    dockerfile: Dockerfile
     restart: on-failure
 #    restart: always
     hostname: bootnode
-    links:
-      - netstats
+#    links:
+#      - netstats
+#      - node
     entrypoint: /root/boot.sh
-    command: '--datadir=~/.ethereum/devchain --nodekeyhex=091bd6067cb4612df85d9c1ff85cc47f259ced4d4cd99816b14f35650f59c322 --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --networkid=456719 --rpc --rpcaddr="0.0.0.0"'
+#    command: '--datadir=~/.ethereum/devchain --nodekeyhex=091bd6067cb4612df85d9c1ff85cc47f259ced4d4cd99816b14f35650f59c322 --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --networkid=456719 --rpc --rpcaddr="0.0.0.0"'
     volumes:
-      - ./files/password:/root/files/password:ro
+      - ./files/passwords:/root/files/passwords:ro
       - ./files/genesis.json:/root/files/genesis.json:ro
-      - ./files/keystore:/root/.ethereum/devchain/keystore:rw
+      - ./files/keystore:/root/node/bootnode/keystore:rw
 #      - /etc/localtime:/etc/localtime:ro
-      - geth_data:/root/node:rw
+      - ./node_data:/root/node:rw
     ports:
-      - "30303:30303"
-      - "30303:30303/udp"
+      - "31513:31513"
+      - "31513:31513/udp"
       - "8545:8545"
-
-
 #    stdin_open: true
 #    tty: true
 
-#  node:
-#    build: node
-#    restart: on-failure
+  node:
+#    container_name: node
+    build: node
+    restart: on-failure
+#    hostname: bootnode
 #    links:
-#      - bootnode
 #      - netstats
-#    entrypoint: /root/start.sh
-#    volumes:
-#      - ./files/password:/root/files/password:ro
-#      - ./files/genesis.json:/root/files/genesis.json:ro
-#      - ./files/keystore:/root/.ethereum/devchain/keystore:rw
+#      - bootnode
+    entrypoint: /root/start.sh
+#    command: '--datadir=~/.ethereum/devchain --nodekeyhex=091bd6067cb4612df85d9c1ff85cc47f259ced4d4cd99816b14f35650f59c322 --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --networkid=456719 --rpc --rpcaddr="0.0.0.0"'
+    volumes:
+      - ./files/passwords:/root/files/passwords:ro
+      - ./files/genesis.json:/root/files/genesis.json:ro
+      - ./files/keystore:/root/files/keystore:rw
 #      - /etc/localtime:/etc/localtime:ro
-#    command: '--datadir=~/.ethereum/devchain --rpccorsdomain="*" --networkid=456719 --rpc --bootnodes="enode://288b97262895b1c7ec61cf314c2e2004407d0a5dc77566877aad1f2a36659c8b698f4b56fd06c4a0c0bf007b4cfb3e7122d907da3b005fa90e724441902eb19e@XXX:30303"'
+      - ./node_data:/root/node:rw
+#    ports:
+#      - "31513:31513"
+#      - "31513:31513/udp"
+#      - "8545:8545"
+
 
   netstats:
     image: settlemint/ethstats-server
@@ -48,12 +54,16 @@ services:
     container_name: netstats
     hostname: netstats
     environment:
-      - WS_SECRET=eth-net-stats-secret
+      - WS_SECRET=12345
 #    volumes:
 #      - /etc/localtime:/etc/localtime:ro
     ports:
       - "3000:3000"
 
 volumes:
-    geth_data:
+    node_data:
       driver: local
+
+networks:
+  default:
+    driver: bridge
