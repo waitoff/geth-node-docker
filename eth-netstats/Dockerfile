@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add --update git bash nodejs nodejs-npm
+RUN apk add --update git bash nodejs npm
 
 RUN cd /root &&\
     git clone https://github.com/goerli/ethstats-server &&\
