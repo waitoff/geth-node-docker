@@ -3,7 +3,8 @@ FROM ubuntu:22.04
 
 #RUN apk add --update git bash nodejs npm
 RUN apt-get update
-RUN apt-get install git nodejs npm
+#RUN apt-get install git nodejs npm
+RUN apt-get install git npm
 
 
 #RUN cd /root &&\
