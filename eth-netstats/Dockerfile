@@ -1,4 +1,5 @@
-FROM ubuntu:22.04
+FROM node:latest
+#FROM ubuntu:22.04
 #FROM alpine
 
 #RUN apk add --update git bash nodejs npm
