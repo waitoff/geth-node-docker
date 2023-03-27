@@ -3,7 +3,7 @@ version: '3'
 services:
   bootnode:
     container_name: bootnode
-    build: ./bootnode
+    build: bootnode
 #    dockerfile: Dockerfile
     restart: on-failure
 #    restart: always
